@@ -172,11 +172,16 @@ class Tree{
 
     //Lab
     int getMaxDepth(){
-
-
+        return getMaxDepthHelper(root);
     }
-
-
+    int getMaxDepthHelper(Node * node){
+        if(node == NULL){
+            return 0;
+        }
+        int leftDepth = getMaxDepthHelper(node->left);
+        int rightDepth = getMaxDepthHelper(node->right);
+        return (leftDepth > rightDepth ? leftDepth : rightDepth) + 1;
+    }
 
     private:
 
@@ -188,6 +193,7 @@ class Tree{
         cout<<node->data<<"  ";
         displayLDR(node->right);
     }
+    
     Node * getMaxRight(Node * current ){
         if(current == NULL){
             return NULL;
@@ -241,6 +247,7 @@ class Tree{
         }
         return NULL;
     }
+    
 };
 int main()
 {
@@ -323,6 +330,9 @@ int main()
         cout<<"We Delete 30 "<<endl;
         t.removeNode(30);
         t.traverse();//20  25  27  xx  34  35  xx   39  40  45  xx 47  60  65  xx
+
+
+        cout << "Max Depth: " << t.getMaxDepth() << endl;
     cout << "Hello world!" << endl;
     return 0;
 }
