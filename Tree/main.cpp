@@ -81,6 +81,7 @@ class Tree{
         }
         return -1;
     }
+    
     void removeNode( int data ){
         // Helper Functions
         Node * current=getNodeByData(data);
@@ -107,8 +108,6 @@ class Tree{
                     maxRight->right=root->right;
                     root=newRoot;
                 }
-
-
         }else{
             // Node Not Root
             Node * parent = getParent(current);
@@ -155,15 +154,16 @@ class Tree{
                 }*/
             }
             if(current->data > parent->data ){
-                    parent->right=child;
+                parent->right=child;
             }
             else{
-                    parent->left=child;
+                parent->left=child;
             }
         }
         //Delete Node
         delete current ;
     }
+    
     void traverse(){
         cout<<"====================================================="<<endl;
         displayLDR(root);
